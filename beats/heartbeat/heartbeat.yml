@@ -1,0 +1,27 @@
+heartbeat.monitors:
+- type: http
+  schedule: '@every 5s'
+  urls:
+    - http://elasticsearch:9200
+    - http://kibana:5601
+    - http://adminpostgres:8080
+
+- type: icmp
+  schedule: '@every 5s'
+  hosts:
+    - elasticsearch
+    - kibana
+    - db
+    - metricbeat
+
+processors:
+- add_cloud_metadata: ~
+
+output.elasticsearch:
+  hosts: 'elasticsearch:9200'
+  username: 'elastic'
+  password: 'changeme'
+
+# Configuração de geração de dashboards
+setup.kibana:
+  host: "kibana:5601"
