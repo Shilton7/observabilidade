@@ -38,9 +38,17 @@ services:
         - db
       networks: 
         - observability-app
+
+    nginx:
+      build: ../nginx
+      container_name: nginx
+      depends_on:
+        - app
+      ports:
+      - "8080:80"
+      networks: 
+        - observability-app
     
-
-
 networks:
   observability-app:
-    external: true     
+    external: true
