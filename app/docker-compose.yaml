@@ -1,0 +1,46 @@
+version: '3'   
+
+services:
+    db:
+      image: postgres
+      container_name: postgres
+      tty: true
+      environment:
+        - POSTGRES_DB=commerce_admin
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=root
+      ports:
+        - "5432:5432"
+      networks: 
+        - observability-app
+
+    pgadmin:
+      image: dpage/pgadmin4
+      container_name: pgadmin
+      tty: true
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=shilton@gmail.com
+        - PGADMIN_DEFAULT_PASSWORD=shilton1821W
+      ports:
+        - "9001:80"
+      networks: 
+        - observability-app
+    
+    app:
+      build: .
+      container_name: app_python
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      depends_on:
+        - db
+      networks: 
+        - observability-app
+    
+
+
+networks:
+  observability-app:
+    external: true     
