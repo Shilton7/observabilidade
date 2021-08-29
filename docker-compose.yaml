@@ -38,6 +38,37 @@ services:
       ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
     networks:
       - observability
+    
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: shilton
+      POSTGRES_PASSWORD: shilton15048742W
+
+  adminpostgres:
+    image: adminer
+    container_name: adminpostgres
+    restart: always
+    depends_on: 
+      - db
+    ports:
+      - 8080:8080
+
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:7.14.0
+    container_name: metricbeat
+    restart: on-failure
+    depends_on: 
+      - elasticsearch
+    command: ["--strict.perms=false"]
+    user: root
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./beats/metric/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
+    networks:
+      - observability
 
 networks:
   observability:
