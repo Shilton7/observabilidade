@@ -167,8 +167,8 @@ setup.kibana:
 # The cloud.auth setting overwrites the `output.elasticsearch.username` and
 # `output.elasticsearch.password` settings. The format is `<user>:<pass>`.
 #cloud.auth:
-# cloud.id: "observability-deployment:dXMtZWFzdC0xLmF3cy5mb3VuZC5pbyQ4MzE2OGQ1MGUwN2U0ZmFhYTk1MjgxNzQxMTUwMzA2NSQzMGRiOWRjOTk4YTc0MGEwYjg0OThmODZhZmRjNTBiMw=="
-# cloud.auth: "elastic:PoFpWBdAoU9Y7kbAU64xXyyh"
+cloud.id: "shilton-observability-deployment:dXMtZWFzdC0xLmF3cy5mb3VuZC5pbyRmM2NmNmJhZGU4Njk0YTIxYTBiMzI5ZDQ0ODUxOTc1YiQ5MDg1NzMxZjJkZDg0MDI5OWExZGIxYjI1NWM0Mzg3NQ=="
+cloud.auth: "elastic:TOKEN-AQUI"
 
 # ================================== Outputs ===================================
 

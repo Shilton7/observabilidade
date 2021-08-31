@@ -57,13 +57,18 @@ MIDDLEWARE = [
 ]
 
 ELASTIC_APM = {
-  # Set required service name. Allowed characters:
-  # a-z, A-Z, 0-9, -, _, and space
-  'SERVICE_NAME': 'codeprogress',
+    # Allowed characters: a-z, A-Z, 0-9, -, _, and space
+    'SERVICE_NAME': 'codeprogress-Shilton',
 
-  # Set custom APM Server URL (default: http://localhost:8200)
-  'SERVER_URL': 'http://host.docker.internal:8200',
-  'DEBUG': True,
+    #Use if APM Server requires a secret token
+    'SECRET_TOKEN': 'TOKEN AQUI!',
+
+    # Set the custom APM Server URL (default: http://localhost:8200)
+    'SERVER_URL': 'https://02480cc45d0242ad99eb7111cbcd46a1.apm.us-east-1.aws.cloud.es.io:443',
+
+    # Set the service environment
+    'DEBUG': True,
+    'ENVIROMENT': 'production'
 }
 
 ROOT_URLCONF = 'codeprogress.urls'
